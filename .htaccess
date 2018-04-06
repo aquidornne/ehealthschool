@@ -1,0 +1,23 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^site$ index.php
+RewriteRule ^a_empresa$ about.php
+RewriteRule ^curso_para_professores_de_medicina$ courses_1.php
+RewriteRule ^nossos_cursos$ courses_2.php
+RewriteRule ^curso$ courses_by_ref.php
+RewriteRule ^fale_conosco$ contact.php
+RewriteRule ^matricula$ registration_1.php
+RewriteRule ^error$ error.php
+RewriteRule ^login$ login.php
+RewriteRule ^retorno_da_compra$ return_buy.php
+
+RewriteRule ^curso/([^/]*)/([^/]*)$ course_by_ref.php?course_id=$1&url=$2 [L]
+RewriteRule ^curso/([^/]*)/([^/]*)/$ course_by_ref.php?course_id=$1&url=$2 [L]
+
+RewriteRule ^matricula/([^/]*)/([^/]*)$ registration_1.php?course_id=$1&url=$2 [L]
+RewriteRule ^matricula/([^/]*)/([^/]*)/$ registration_1.php?course_id=$1&url=$2 [L]
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
